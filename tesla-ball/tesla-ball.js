@@ -11,6 +11,7 @@ export function initTeslaBall(canvas, options = {}) {
     ballSize: 0.15,         // Ball radius as fraction of container (0.05 = tiny, 0.25 = large)
     reachMultiplier: 4,     // Cursor trigger distance (multiplier of ball radius)
     speed: 0.3,             // Lightning refresh rate (0.1 = slow/persistent, 1.0 = fast/flickery)
+    transparent: false,     // When true, skip background fill (see-through)
     ...options,
   };
 
@@ -243,11 +244,13 @@ export function initTeslaBall(canvas, options = {}) {
     frameCount++;
     ctx.clearRect(0, 0, W, H);
 
-    const bg = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(W, H) * 0.7);
-    bg.addColorStop(0, '#0a0812');
-    bg.addColorStop(1, '#020108');
-    ctx.fillStyle = bg;
-    ctx.fillRect(0, 0, W, H);
+    if (!CONFIG.transparent) {
+      const bg = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(W, H) * 0.7);
+      bg.addColorStop(0, '#0a0812');
+      bg.addColorStop(1, '#020108');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, W, H);
+    }
 
     drawSphere();
 
