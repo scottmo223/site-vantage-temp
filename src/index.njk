@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Vantage Method</title>
+  <link rel="icon" type="image/svg+xml" href="/public/logo-favicon.svg">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Three.js canvas (full viewport, behind everything) -->
+  <canvas id="three-canvas"></canvas>
+
+  <!-- Tesla ball canvas (right side) -->
+  <div id="tesla-wrap">
+    <canvas id="tesla"></canvas>
+  </div>
+
+  <!-- Content overlay -->
+  <div id="content">
+    <div id="logo-area">
+      <img src="/public/logo-web-icon.png" alt="Vantage Method" id="logo-img">
+    </div>
+    <h1>Vantage Method</h1>
+    <p class="tagline">Built on Strategy. Powered by AI. Engineered for Results.</p>
+    <a href="mailto:hello@vantagemethod.com" class="email">hello@vantagemethod.com</a>
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

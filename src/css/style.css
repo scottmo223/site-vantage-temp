@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0a0812;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  color: #e0dce8;
+}
+
+/* Three.js canvas — full viewport behind everything */
+#three-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  touch-action: none;
+}
+
+/* Tesla ball — right side */
+#tesla-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: auto;
+}
+
+#tesla-wrap canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: none;
+}
+
+/* Content overlay */
+#content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  pointer-events: none;
+  padding: 2rem;
+}
+
+#logo-area {
+  margin-bottom: 1.5rem;
+}
+
+#logo-img {
+  width: clamp(120px, 20vw, 260px);
+  height: auto;
+  filter: drop-shadow(0 0 30px hsla(260, 60%, 50%, 0.4));
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #c8b8e8, #ffffff, #a89cd8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tagline {
+  font-size: clamp(0.95rem, 1.8vw, 1.3rem);
+  color: #a09ab0;
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+}
+
+.email {
+  pointer-events: auto;
+  color: #8b7fc7;
+  text-decoration: none;
+  font-size: 1rem;
+  border: 1px solid hsla(260, 40%, 50%, 0.3);
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.email:hover {
+  background: hsla(260, 40%, 50%, 0.15);
+  color: #c0b4e0;
+}
+
+/* Responsive: on narrow screens stack tesla below */
+@media (max-width: 768px) {
+  #tesla-wrap {
+    width: 100%;
+    height: 40%;
+    top: auto;
+    bottom: 0;
+  }
+
+  #content {
+    justify-content: flex-start;
+    padding-top: 15vh;
+  }
+}

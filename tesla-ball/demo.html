@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tesla Ball — Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000; overflow: hidden; }
+    .tesla-container { width: 100vw; height: 100vh; }
+    .tesla-container canvas { display: block; cursor: none; width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+  <div class="tesla-container">
+    <canvas id="tesla"></canvas>
+  </div>
+  <script type="module">
+    import { initTeslaBall } from './tesla-ball.js';
+    initTeslaBall(document.getElementById('tesla'), {
+      ballSize: 0.15,
+      reachMultiplier: 4,
+      speed: 0.3,
+    });
+  </script>
+</body>
+</html>
