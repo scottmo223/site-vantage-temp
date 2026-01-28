@@ -13,17 +13,21 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.z = 5;
-
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
+// Reference size the logo was tuned at (camera.z = 5 looked right at this height).
+// Camera Z scales so the logo fills the same fraction at any canvas size.
+const REF_HEIGHT = 788;
+const REF_Z = 5;
+
 function resizeRenderer() {
-  const rect = canvas.parentElement
-    ? canvas.getBoundingClientRect()
-    : { width: window.innerWidth, height: window.innerHeight };
+  const rect = canvas.getBoundingClientRect();
   renderer.setSize(rect.width, rect.height, false);
   camera.aspect = rect.width / rect.height;
+  camera.position.z = window.innerWidth > 768
+    ? REF_Z * (REF_HEIGHT / rect.height)
+    : REF_Z;
   camera.updateProjectionMatrix();
 }
 resizeRenderer();
@@ -47,7 +51,7 @@ let logoModel = null;
 logoLoader.load('/public/logo-web-icon.glb', (gltf) => {
   logoModel = gltf.scene;
   // ── Adjust logo size here (smaller number = smaller logo) ──
-  const LOGO_SCALE = 0.024;
+  const LOGO_SCALE = 0.020;
   logoModel.scale.set(LOGO_SCALE, LOGO_SCALE, LOGO_SCALE);
   logoModel.position.set(0, 0, 0);
   scene.add(logoModel);
