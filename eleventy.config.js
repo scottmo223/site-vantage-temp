@@ -5,6 +5,13 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/css": "css" });
   eleventyConfig.addPassthroughCopy("robots.txt");
 
+  eleventyConfig.setServerOptions({
+    domDiff: true,
+    port: 8080,
+    host: "0.0.0.0",
+    showAllHosts: true,
+  });
+
   return {
     dir: {
       input: "src",

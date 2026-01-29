@@ -7,7 +7,7 @@ npm install
 npm run dev
 ```
 
-Opens at `http://localhost:8080`. Live-reloads on file changes.
+Opens at `http://localhost:8080` or `http://<local-ip>:8080`
 
 To build for production: `npm run build` (outputs to `_site/`).
 
